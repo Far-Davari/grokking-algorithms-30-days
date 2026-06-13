@@ -1,0 +1,32 @@
+let comparisons = 0; // n(n-1)/2
+
+function findSmallest(arr) {
+  let smallest = arr[0];
+  let smallestIndex = 0;
+  for (let i = 1; i < arr.length; i++) {
+    comparisons++;
+    if (arr[i] < smallest) {
+      smallest = arr[i];
+      smallestIndex = i;
+    }
+  }
+  return smallestIndex;
+}
+
+function selectionSort(arr) {
+  comparisons = 0;
+  let workingArr = [...arr];
+  let sortedArr = [];
+
+  while (workingArr.length > 0) {
+    let index = findSmallest(workingArr);
+    sortedArr.push(workingArr[index]);
+    workingArr.splice(index, 1);
+  }
+
+  return sortedArr;
+}
+
+const myArr = [20, 50, 10, 2, 3, 99, 56, 7, 33, 53, 35, 0, -56];
+console.log(selectionSort(myArr));
+console.log("Comparisons:", comparisons);
