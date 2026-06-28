@@ -23,3 +23,11 @@ If we always take the first element as the pivot and the array is already sorted
 - The recursion depth becomes n (instead of log n).
 - At each level we still do O(n) work, so total work becomes O(n²).  
   This is the worst case. Choosing a better pivot (e.g., median or random) avoids this.
+
+## 4. Why does Quicksort have a smaller constant than merge sort, making it often faster in practice?
+
+Quicksort usually has a smaller constant factor than Merge sort because it can be implemented **in-place** (no extra array copies) and has a simpler inner loop that only swaps elements. Merge sort, on the other hand, needs to copy the whole array during the merging step, which adds overhead. This makes Quicksort faster in practice, even though both are O(n log n) on average.
+
+## 5. Explain how choosing a random pivot changes the worst-case behaviour from O(n²) to O(n log n) on average.
+
+The stack size equals the maximum depth of recursion. If you pick a random pivot, the probability of repeatedly hitting the worst case (where the pivot is always the smallest or largest element) becomes extremely small. The expected depth of the recursion tree is O(log n), so the total work remains O(n) × O(log n) = O(n log n) on average, even if the array is already sorted.
